@@ -41,7 +41,8 @@ build: build-rust build-py  ## Build the project
 
 .PHONY: lint-py lint-rust lint
 lint-py:
-	python -m ruff flatten
+	python -m ruff check flatten
+	python -m ruff format --check flatten
 
 lint-rust:
 	make -C rust lint
@@ -50,7 +51,8 @@ lint: lint-rust lint-py  ## Run project linters
 
 .PHONY: fix-py fix-rust fix
 fix-py:
-	python -m ruff flatten --fix
+	python -m ruff check --fix flatten
+	python -m ruff format flatten
 
 fix-rust:
 	make -C rust fix
