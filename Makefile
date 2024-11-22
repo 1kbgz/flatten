@@ -41,7 +41,8 @@ build: build-rust build-py  ## Build the project
 
 .PHONY: lint-py lint-rust lint
 lint-py:
-	python -m ruff flatten
+	python -m ruff check flatten
+	python -m ruff format --check flatten
 
 lint-rust:
 	make -C rust lint
@@ -50,16 +51,17 @@ lint: lint-rust lint-py  ## Run project linters
 
 .PHONY: fix-py fix-rust fix
 fix-py:
-	python -m ruff flatten --fix
+	python -m ruff check --fix flatten
+	python -m ruff format flatten
 
 fix-rust:
 	make -C rust fix
 
 fix: fix-rust fix-py  ## Run project autofixers
 
-.PHONY: tests-py tests-rust tests test tests-ci
+.PHONY: tests-py tests-rust tests test coverage coverage-py coverage-rust
 tests-py:
-	python -m pytest -v flatten/tests --junitxml=junit.xml --cov=flatten --cov-branch --cov-fail-under=65 --cov-report term-missing --cov-report xml
+	python -m pytest -v flatten/tests --junitxml=junit.xml
 
 tests-rust:
 	make -C rust tests
@@ -67,10 +69,13 @@ tests-rust:
 tests: tests-rust tests-py  ## Run the tests
 test: tests
 
-tests-ci-rust:
-	make -C rust tests-ci
+coverage-py:
+	python -m pytest -v flatten/tests --junitxml=junit.xml --cov=flatten --cov-branch --cov-fail-under=65 --cov-report term-missing --cov-report xml
 
-tests-ci: tests-ci-rust tests-py
+coverage-rust:
+	make -C rust coverage
+
+coverage: coverage-rust coverage-py
 
 .PHONY: dist publish
 dist: build  ## Create python dists
