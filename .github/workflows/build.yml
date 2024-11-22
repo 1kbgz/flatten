@@ -59,7 +59,7 @@ jobs:
       run: make lint
 
     - name: Test
-      run: make tests-ci
+      run: make coverage
       if: ${{ matrix.os == 'ubuntu-latest' }}
 
     - name: Upload test results
@@ -68,8 +68,7 @@ jobs:
         check_name: Test Results
         github_token: ${{ secrets.GITHUB_TOKEN }}
         files: |
-          rust/junit.xml
-          junit.xml
+          **/junit.xml
       if: ${{ matrix.os == 'ubuntu-latest' }}
 
     - name: Upload coverage
