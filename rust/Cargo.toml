@@ -1,11 +1,11 @@
 [package]
 name = "flatten"
 version = "0.1.0"
-authors = ["timkpaine <t.paine154@gmail.com>"]
+authors = ["1kbgz <dev@1kbgz.com>"]
 edition = "2021"
 license = "Apache-2.0"
 readme = "../README.md"
-repository = "https://github.com/timkpaine/flatten"
+repository = "https://github.com/1kbgz/flatten"
 description = "Opinionated JSON flattening"
 
 [lib]

@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "flatten"
-authors = [{name = "Tim Paine", email = "t.paine154@gmail.com"}]
+authors = [{name = "1kbgz", email = "dev@1kbgz.com"}]
 description="Opinionated JSON flattening"
 version = "0.1.0"
 readme = "README.md"
@@ -42,8 +42,8 @@ test = [
 ]
 
 [project.urls]
-Repository = "https://github.com/timkpaine/flatten"
-Homepage = "https://github.com/timkpaine/flatten"
+Repository = "https://github.com/1kbgz/flatten"
+Homepage = "https://github.com/1kbgz/flatten"
 
 [tool.check-manifest]
 ignore = []
