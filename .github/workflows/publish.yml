@@ -132,7 +132,7 @@ jobs:
 
     - run: twine check wheelhouse/*
 
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v6
       with:
         name: wheels
         path: wheelhouse
